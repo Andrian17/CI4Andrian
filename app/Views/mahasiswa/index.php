@@ -12,16 +12,21 @@
                         <th scope="col">#</th>
                         <th scope="col">Foto</th>
                         <th scope="col">Nama</th>
+                        <th scope="col">Alamat</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><img src="/img/siswa1.jpg" alt="" class="sampul"></td>
-                        <td>Otto</td>
-                        <td><a class="btn btn-success" href=" "> Detail </a></td>
-                    </tr>
+                    <?php $no = 1; ?>
+                    <?php foreach ($mhsList as $m) : ?>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <td><img src="/img/<?= $m['foto']; ?>" alt="" class="sampul"></td>
+                            <td><?= $m['nama']; ?></td>
+                            <td><?= $m['alamat']; ?></td>
+                            <td>Aksi</td>
+                        </tr>
+                    <?php endforeach; ?>
 
                 </tbody>
             </table>
