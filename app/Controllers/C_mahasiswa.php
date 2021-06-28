@@ -19,11 +19,11 @@ class C_mahasiswa extends BaseController
 
     public function index()
     {
-        $mhs =  $this->mhsModel->findAll();
+        // $mhs =  $this->mhsModel->findAll();
 
         $data = [
             'tittle' => 'Andrian',
-            'mhsList' => $mhs
+            'mhsList' => $this->mhsModel->getMhs()
         ];
 
         // $mhsModel = new  \App\Models\M_mahasiswa();
@@ -37,5 +37,22 @@ class C_mahasiswa extends BaseController
         // } 
 
         return view('mahasiswa/index', $data);
+    }
+
+    public function detail($id)
+    {
+        $data = [
+            'tittle' => 'Detail Mahasiswa',
+            'detail' => $this->mhsModel->getMhs($id)
+        ];
+        return view('mahasiswa/detail', $data);
+    }
+
+    public function edit($id)
+    {
+    }
+
+    public function hapus($id)
+    {
     }
 }
