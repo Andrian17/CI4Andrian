@@ -5,7 +5,6 @@ use App\Controllers\BaseController;
 namespace App\Controllers;
 
 use App\Models\M_mahasiswa;
-use CodeIgniter\Database\Query;
 
 class C_mahasiswa extends BaseController
 {
@@ -45,7 +44,51 @@ class C_mahasiswa extends BaseController
             'tittle' => 'Detail Mahasiswa',
             'detail' => $this->mhsModel->getMhs($id)
         ];
+        // if (empty($data['komik'])) {
+        //     throw new \CodeIgniter\Exceptions\PageNotFoundException('Data tidak ditemukan');
+        // }
         return view('mahasiswa/detail', $data);
+    }
+
+    public function tambahData($data = '')
+    {
+        $data = [
+            'tittle' => 'Form Tambah Data',
+            'validation' => \config\Services::validation()
+        ];
+        return view('mahasiswa/tambahData', $data);
+    }
+
+    public function save()
+    {
+
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required|is_Unique[tbl_mhs.nama]',
+                'errors' => [
+                    'required' => '{field} Harus diisi',
+                    'is_Unique' => '{field} Sudah Terdaftar'
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Harus diisi'
+                ]
+            ]
+        ])) {
+            $validation = \config\Services::validation();
+            return redirect()->to('C_mahasiswa/tambahData')->withInput()->with('validation', $validation);
+        }
+
+
+        $this->mhsModel->save([
+            'nama' => $this->request->getVar('nama'),
+            'alamat' => $this->request->getVar('alamat'),
+            'foto' => $this->request->getVar('foto')
+        ]);
+        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+        return redirect()->to('/C_mahasiswa');
     }
 
     public function edit($id)

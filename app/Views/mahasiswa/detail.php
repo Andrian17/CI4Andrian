@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><b>Nama :</b><?= $detail['nama']; ?></h5>
                             <p class="card-text"><b>Alamat :</b><?= $detail['alamat']; ?></p>
-                            <p class="card-text"><small class="text-muted">Terakhir Diubah <?= $detail['updated_App']; ?></small></p>
+                            <p class="card-text"><small class="text-muted">Terakhir Diubah <?= $detail['created_at']; ?></small></p>
                             <a href="/C_Mahsiswa/hapus/<?= $detail['id']; ?>" class="btn btn-info">Detail</a>
                             <a href="/C_mahasiswa/hapus/<?= $detail['id']; ?>" class="btn btn-danger">Hapus</a>
                             <br><br>
