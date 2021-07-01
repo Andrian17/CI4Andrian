@@ -30,7 +30,7 @@
                             <td><img src="/img/<?= $m['foto']; ?>" alt="" class="sampul"></td>
                             <td><?= $m['nama']; ?></td>
                             <td><?= $m['alamat']; ?></td>
-                            <td><a href="/C_mahasiswa/detail/<?= $m['id']; ?>" class="btn btn-info">Deatil</a></td>
+                            <td><a href="C_mahasiswa/<?= $m['id']; ?>" class="btn btn-info">Detail</a></td>
                         </tr>
                     <?php endforeach; ?>
 

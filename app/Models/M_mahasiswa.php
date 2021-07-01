@@ -12,12 +12,17 @@ class M_mahasiswa extends Model
     // protected $createdField = 'dibuat';
     // protected $updateField = 'diperbarui';
 
-    public function getMhs($id = false)
+    public function getMhs($id = "")
     {
-        if ($id == false) {
+        if ($id == "") {
             return $this->findAll();
         }
 
+        return $this->where(['id' => $id])->first();
+    }
+
+    public function getWhere($id)
+    {
         return $this->where(['id' => $id])->first();
     }
 }

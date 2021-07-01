@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Controllers\C_mahasiswa;
 use CodeIgniter\Commands\Utilities\Routes;
 
 // Create a new instance of our RouteCollection class.
@@ -33,13 +34,17 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'C_Mahasiswa::index');
+//$routes->get('/', 'C_Mahasiswa::index');
 // $routes->get('/Coba/about', 'Coba::about');
 // $routes->get('/Coba/about/(:any)/(:any)', 'Coba::about/$1/$2');
 // $routes->get('/Coba/(:any)/(:any)', 'Coba::about/$1/$2');
 // $routes->get('/users', 'Admin\users::index');
-$routes->get('/index', 'C_mahasiswa::index');
-$routes->get('/detail/(:segment)', 'C_mahasiswa::detail/($1)');
+$routes->get('/C_mahasiswa', 'C_mahasiswa::index');
+$routes->get('/C_mahasiswa/FormEdit/(:num)', 'C_mahasiswa::edit/$1');
+$routes->get('/C_mahasiswa/tambahData', 'C_mahasiswa::tambahData');
+$routes->get('/C_mahasiswa/(:num)', 'C_mahasiswa::rincian/$1');
+$routes->delete('/C_mahasiswa/(:num)', 'C_mahasiswa::delete/$1');
+
 
 
 /*
