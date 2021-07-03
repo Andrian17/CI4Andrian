@@ -24,6 +24,9 @@ class C_mahasiswa extends BaseController
 
     public function index()
     {
+        // //faker
+        // $faker = \Faker\Factory::create();
+        // dd($faker->name);
         $data = [
             'tittle' => 'Andrian',
             'mhsList' => $this->mhsModel->getMhs()
@@ -124,6 +127,7 @@ class C_mahasiswa extends BaseController
 
     public function edit($id)
     {
+
         //cek data
         $dataLama = $this->mhsModel->getWhere($id);
         session()->setFlashdata('e', 'Cek Kembali data anda');
